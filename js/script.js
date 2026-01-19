@@ -40,7 +40,7 @@ const PAGE = {
             active = true;
 
             clearTimeout(inactivityTimer); 
-            inactivityTimer = setTimeout(() => active = false, 100);
+            inactivityTimer = setTimeout(() => active = false, 2000);
         });
 
         window.addEventListener('touchmove', e => { 
@@ -56,14 +56,14 @@ const PAGE = {
         function animate() { 
             CTX.clearRect(0, 0, CANVAS.width, CANVAS.height); 
             
-            if(active) TRAIL.push({ x: mouseX, y: mouseY, r: 380, alpha: 1 });
+            if(active) TRAIL.push({ x: mouseX, y: mouseY, r: 480, alpha: 1 });
             
             for (let i = 0; i < TRAIL.length; i++) { 
                 const P = TRAIL[i]; 
                 CTX.beginPath(); 
                 const G = CTX.createRadialGradient(P.x, P.y, 0, P.x, P.y, P.r);
                 
-                G.addColorStop(0.5, `rgba(0, 12, 29, 0.02)`);
+                G.addColorStop(0.5, `rgba(0, 12, 29, 0.1)`);
                 G.addColorStop(1, `rgba(67, 177, 255, 0)`); 
                 CTX.fillStyle = G; 
                 CTX.arc(P.x, P.y, P.r, 0, Math.PI * 2); 
